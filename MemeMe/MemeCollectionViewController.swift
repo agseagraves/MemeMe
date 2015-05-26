@@ -35,10 +35,14 @@ class MemeCollectionViewController : UICollectionViewController, UICollectionVie
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "MemeCell")
-
+            
+        // Use the built iOS default share icon
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+                barButtonSystemItem: .Add,
+                target: self,
+                action: "editorButton:")
     }
 
-    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         

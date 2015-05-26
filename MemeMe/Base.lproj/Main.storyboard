@@ -85,11 +85,11 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="V2q-hK-Saf">
-                        <barButtonItem key="leftBarButtonItem" image="mobileprint-shareicon" style="plain" id="g1f-If-x2E">
+                        <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="g1f-If-x2E">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3Qf-E3-eXL">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="mobileprint-shareicon">
+                                <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -115,7 +115,6 @@
                         <outlet property="bottomMessage" destination="IQv-Kv-0ZD" id="lZb-jm-mCO"/>
                         <outlet property="cameraButton" destination="QIN-R1-KQr" id="t3D-Pp-c1m"/>
                         <outlet property="imagePickerView" destination="ttj-Ch-fSV" id="0IM-Fw-FBs"/>
-                        <outlet property="shareButton" destination="3Qf-E3-eXL" id="vwp-mg-GnG"/>
                         <outlet property="topMessage" destination="642-BY-ZWF" id="jtm-Wi-Mf2"/>
                     </connections>
                 </viewController>
@@ -226,7 +225,7 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Nsf-gn-Ied">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="plus-32">
+                                <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -283,7 +282,7 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pcY-k5-t7H">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="plus-32">
+                                <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -359,8 +358,6 @@
     </scenes>
     <resources>
         <image name="collection_30x30" width="30" height="30"/>
-        <image name="mobileprint-shareicon" width="128" height="128"/>
-        <image name="plus-32" width="32" height="32"/>
         <image name="table_30x30" width="30" height="30"/>
     </resources>
 </document>

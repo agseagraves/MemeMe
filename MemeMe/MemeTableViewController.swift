@@ -39,6 +39,12 @@ class MemeTableViewController : UITableViewController {
         //    showEditor()
         //}
         
+        // Use the built iOS default share icon
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .Add,
+            target: self,
+            action: "addButton:")
+        
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

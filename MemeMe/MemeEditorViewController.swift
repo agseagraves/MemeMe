@@ -18,22 +18,20 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var bottomMessage: UITextField!
     @IBOutlet weak var topMessage: UITextField!
     
-    @IBOutlet weak var shareButton: UIButton!
-    
     var memedImage = UIImage()
     private let appDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         // disable the camara button if not available
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         
         // disable the share button if no image
         if imagePickerView.image != nil {
-            shareButton.enabled = true
+            navigationItem.leftBarButtonItem?.enabled = true
         } else {
-            shareButton.enabled = false
+            navigationItem.leftBarButtonItem?.enabled = false
         }
 
         self.subscribeToKeyboardNotifications()
@@ -49,33 +47,45 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Use the built iOS default share icon
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .Action,
+            target: self,
+            action: "share:")
+        
         self.topMessage.delegate = self
         self.bottomMessage.delegate =  self
         
         self.bottomMessage.text = "BOTTOM"
         self.topMessage.text = "TOP"
         
+        prepareText(self.topMessage)
+        prepareText(self.bottomMessage)
+        
+        self.imagePickerView.image = nil
+    }
+
+    func prepareText(textField: UITextField) {
+        // set the text to be white with black outline. Make sure it is forced to uppercase and centered. Working with the simulator will not take that setting unless specified in code.
         let memeTextAttributes = [
             NSStrokeColorAttributeName : UIColor.blackColor(),
             NSForegroundColorAttributeName : UIColor.whiteColor(),
             NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
             NSStrokeWidthAttributeName : -3.0
         ]
-        self.bottomMessage.defaultTextAttributes = memeTextAttributes
-        self.topMessage.defaultTextAttributes = memeTextAttributes
         
-        self.topMessage.textAlignment = NSTextAlignment.Center
-        self.bottomMessage.textAlignment = NSTextAlignment.Center
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = NSTextAlignment.Center
+        textField.autocapitalizationType = UITextAutocapitalizationType.AllCharacters
         
-        self.topMessage.autocapitalizationType = UITextAutocapitalizationType.AllCharacters
-        self.bottomMessage.autocapitalizationType = UITextAutocapitalizationType.AllCharacters
-        
-        self.imagePickerView.image = nil
     }
-
+    
     func textFieldDidBeginEditing(textField: UITextField) {
-        // Blank out existing text
-        textField.text = ""
+        // Blank out existing text if this is the default text
+        if textField.text == "BOTTOM" || textField.text == "TOP" {
+            textField.text = ""
+        }
+        
     }
 
     func textFieldDidEndEditing(textField: UITextField) {
@@ -117,13 +127,12 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     func keyboardWillShow(notification: NSNotification) {
         if bottomMessage.isFirstResponder() {
-            self.view.frame.origin.y -= getKeyboardHeight(notification)
+            self.view.frame.origin.y = -getKeyboardHeight(notification)
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
         if bottomMessage.isFirstResponder() {
-            //self.view.frame.origin.y += getKeyboardHeight(notification)
             self.view.frame.origin.y = 0
         }
     }
