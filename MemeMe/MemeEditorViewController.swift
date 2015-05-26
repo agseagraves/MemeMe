@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorViewController.swift
 //  MemeMe
 //
 //  Created by Anita Seagraves on 5/4/15.
@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate,
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var imagePickerView: UIImageView!
@@ -123,7 +123,8 @@ UINavigationControllerDelegate, UITextFieldDelegate {
     
     func keyboardWillHide(notification: NSNotification) {
         if bottomMessage.isFirstResponder() {
-            self.view.frame.origin.y += getKeyboardHeight(notification)
+            //self.view.frame.origin.y += getKeyboardHeight(notification)
+            self.view.frame.origin.y = 0
         }
     }
     

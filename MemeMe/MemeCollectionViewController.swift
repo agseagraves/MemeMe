@@ -43,9 +43,9 @@ class MemeCollectionViewController : UICollectionViewController, UICollectionVie
         super.viewDidAppear(animated)
         
         // show editor if no memes
-        if appDelegate.memes.count == 0 {
-            showEditor()
-        }
+        //if appDelegate.memes.count == 0 {
+        //    showEditor()
+        //}
 
     }
     
